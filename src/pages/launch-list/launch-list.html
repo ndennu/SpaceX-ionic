@@ -16,12 +16,13 @@
       </ion-avatar>
       <h2>
         <div float-left>{{launch.mission_name}}</div>
-        <div float-right>
-          <ion-badge colors="primary">{{launch.launch_success}}</ion-badge>
-        </div>
+        
       </h2>
+      <div float-right>
+        <ion-badge colors="primary">{{launch.launch_success}}</ion-badge>
+      </div>
       <br/>
-      <p>{{launch.details}}</p>
+      <p>{{launch.launch_date_utc | date : "MM/d/yyyy"}}</p>
     </button>
   </ion-list>
 </ion-content>

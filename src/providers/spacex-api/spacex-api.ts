@@ -17,12 +17,12 @@ export class SpacexApiProvider {
     }
 
     getAllCapsules(): Observable<Capsule[]> {
-        const endPointUrl = `${this.baseUrl}/launches/all`;
+        const endPointUrl = `${this.baseUrl}/capsules`;
         return this.http.get<Capsule[]>(endPointUrl);
     }
 
     getAllLaunches(): Observable<Launch[]> {
-        const endPointUrl = `${this.baseUrl}/capsules`;
+        const endPointUrl = `${this.baseUrl}/launches/all?order=desc`;
         return this.http.get<Launch[]>(endPointUrl);
     }
 

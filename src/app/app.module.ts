@@ -34,8 +34,8 @@ import { LaunchListPage } from '../pages/launch-list/launch-list';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
     SpacexApiProvider
   ]
 })
-export class AppModule {}
+export class AppModule { }

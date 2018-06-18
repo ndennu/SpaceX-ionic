@@ -40,8 +40,7 @@
         <h3 >Stages : {{rocket.stages}}</h3>
       </div>
       <div float-right>
-        <ion-badge *ngIf="rocket.active" color="green">active</ion-badge>
-        <ion-badge *ngIf="!rocket.active" color="red">inactive</ion-badge>
+        <ion-badge [color]="rocket.active ? 'green' : 'red'">{{rocket.active ? 'active' : 'inactive'}}</ion-badge>
       </div>
     </button>
   </ion-list>

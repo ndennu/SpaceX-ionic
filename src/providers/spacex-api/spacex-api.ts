@@ -5,6 +5,7 @@ import { Launch, Rocket } from '../../app/models/Launch';
 import { Capsule } from '../../app/models/Capsule';
 import { Launchpad } from '../../app/models/Launchpad';
 import { CompanyHistory } from '../../app/models/CompanyHistory';
+import { About } from '../../app/models/About';
 
 
 @Injectable()
@@ -34,6 +35,11 @@ export class SpacexApiProvider {
     getAllRockets(): Observable<Rocket[]> {
         const endPointUrl = `${this.baseUrl}/rockets`;
         return this.http.get<Rocket[]>(endPointUrl);
+    }
+
+    getInfoCompagny(): Observable<About> {
+        const endPointUrl = `${this.baseUrl}/info`;
+        return this.http.get<About>(endPointUrl);
     }
 
     getTimeLineCompagny(): Observable<CompanyHistory[]> {

@@ -1,13 +1,55 @@
 <ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Compagny info</ion-title>
+  <ion-navbar  color="primary">
+    <ion-title>
+      About
+    </ion-title>
   </ion-navbar>
 </ion-header>
 
+<ion-content no-padding>
+  <ion-card *ngIf="about" no-padding>
 
-<ion-content padding>
+    <img src="../../assets/imgs/about/spaceXposter.jpg">
 
+    <ion-card-header text-center color="primary">
+      {{ about.name }}
+    </ion-card-header>
+
+    <ion-card-content>
+      {{ about.summary }}
+    </ion-card-content>
+
+    <ion-item>
+      <ion-icon name="home" item-start large></ion-icon>
+      <h2>Foundation</h2>
+      <p>Founded by {{ about.founder }} in {{ about.founded }}</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="pin" item-left large></ion-icon>
+      <h2>Headquarter</h2>
+      <p> {{ about.headquarters.state}}, {{ about.headquarters.city }} </p>
+      <p> {{ about.headquarters.address }} </p>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="people" item-left large></ion-icon>
+      <h2>Employees</h2>
+      <p> {{ about.employees}} </p>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="jet" item-left large></ion-icon>
+      <h2>Launch Sites</h2>
+      <p> {{ about.launch_sites}} </p>
+      <p> Test Sites: {{ about.test_sites}} </p>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="car" item-left large></ion-icon>
+      <h2>Vehicles</h2>
+      <p> {{ about.vehicles}} </p>
+    </ion-item>
+
+  </ion-card>
 </ion-content>

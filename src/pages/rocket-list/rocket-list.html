@@ -22,8 +22,8 @@
 
   <ion-row>
     <ion-col text-center>
-      <h4 *ngIf="rockets">{{rockets.length}} items</h4>
-      <h4 *ngIf="!rockets">0 items</h4>
+      <h4 *ngIf="rockets">{{rockets.length}} rockets</h4>
+      <h4 *ngIf="!rockets">No rocket</h4>
     </ion-col>
   </ion-row>
 
@@ -37,10 +37,10 @@
     <button ion-item *ngFor="let rocket of rockets" (click)="rocketDetails(rocket)">
       <div float-left>
         <h2>{{rocket.name}}</h2>
-        <h3>Stages : {{rocket.stages}}</h3>
+        <h4>Stages : {{rocket.stages}}</h4>
       </div>
       <div float-right>
-        <ion-badge [color]="rocket.active ? 'green' : 'red'">{{rocket.active ? 'active' : 'inactive'}}</ion-badge>
+        <ion-badge [color]="rocket.active ? 'green' : 'red'">{{rocket.active ? 'Active' : 'Inactive'}}</ion-badge>
       </div>
     </button>
   </ion-list>

@@ -1,11 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { Launch, Rocket } from '../../app/models/Launch';
+import { Launch } from '../../app/models/Launch';
 import { Capsule } from '../../app/models/Capsule';
 import { Launchpad } from '../../app/models/Launchpad';
 import { CompanyHistory } from '../../app/models/CompanyHistory';
 import { About } from '../../app/models/About';
+import { Rocket } from '../../app/models/Rocket';
 
 
 @Injectable()

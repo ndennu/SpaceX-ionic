@@ -8,18 +8,42 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
+  <ion-segment [(ngModel)]="filterList" color="primary" (ionChange)="filterChange()" padding style="padding-bottom: 0;">  
+    <ion-segment-button value="success" [disabled]="!launches">
+      Success
+    </ion-segment-button>
+    <ion-segment-button value="all" [disabled]="!launches">
+      All
+    </ion-segment-button>
+    <ion-segment-button value="fail" [disabled]="!launches">
+      Fail
+    </ion-segment-button>
+  </ion-segment>
+
+  <ion-row>
+    <ion-col text-center>
+      <h4 *ngIf="launches">{{launches.length}} items</h4>
+      <h4 *ngIf="!launches">0 items</h4>
+    </ion-col>
+  </ion-row>
+
+  <ion-row padding margin *ngIf="onLoad">
+    <ion-col text-center>
+      <ion-spinner name="crescent"></ion-spinner>
+    </ion-col>
+  </ion-row>
+
   <ion-list>
     <button ion-item *ngFor="let launch of launches" (click)="launchDetails(launch)">
       <ion-avatar item-start>
         <img src="{{launch.links.mission_patch_small}}" *ngIf="launch.links.mission_patch_small">
       </ion-avatar>
+      
       <h2>{{launch.mission_name}}</h2>
-      <br/>
-      <div float-left>{{launch.launch_date_utc | date : "MM/d/yyyy"}}</div>
+      <h3 float-left>{{launch.launch_date_utc | date : "MM/dd/yyyy"}}</h3>
       <div float-right>
-        <ion-badge *ngIf="launch.launch_success" color="green">Success</ion-badge>
-        <ion-badge *ngIf="!launch.launch_success" color="red">Fail</ion-badge>
+        <ion-badge [color]="launch.launch_success ? 'green' : 'red'">{{launch.launch_success ? 'Success' : 'Fail'}}</ion-badge>
       </div>
     </button>
   </ion-list>

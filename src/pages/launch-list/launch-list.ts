@@ -12,6 +12,11 @@ import { LaunchDetailsPage } from '../launch-details/launch-details';
 export class LaunchListPage {
 
     launches: Launch[];
+    launchesSave: Launch[];
+
+    private onLoad: boolean = true;
+
+    filterList: string = "all";
 
     constructor(
         private navCtrl: NavController,
@@ -20,6 +25,8 @@ export class LaunchListPage {
 
         this.spacexApi.getAllLaunches().subscribe(data => {
             this.launches = data;
+            this.launchesSave = data;
+            this.onLoad = false;
         });
 
     }
@@ -30,6 +37,15 @@ export class LaunchListPage {
 
     launchDetails(launch: Launch) {
         this.navCtrl.push(LaunchDetailsPage, launch);
+    }
+
+    filterChange() {
+        this.launches = this.launchesSave;
+
+        switch (this.filterList) {
+            case "success": this.launches = this.launches.filter(launch => launch.launch_success === true); break;
+            case "fail": this.launches = this.launches.filter(launch => launch.launch_success === false); break;
+        } 
     }
 
 }

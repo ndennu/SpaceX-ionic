@@ -37,7 +37,7 @@
     <button ion-item *ngFor="let rocket of rockets" (click)="rocketDetails(rocket)">
       <div float-left>
         <h2>{{rocket.name}}</h2>
-        <h3 >Stages : {{rocket.stages}}</h3>
+        <h3>Stages : {{rocket.stages}}</h3>
       </div>
       <div float-right>
         <ion-badge [color]="rocket.active ? 'green' : 'red'">{{rocket.active ? 'active' : 'inactive'}}</ion-badge>

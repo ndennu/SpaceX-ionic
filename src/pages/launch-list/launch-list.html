@@ -14,15 +14,12 @@
       <ion-avatar item-start>
         <img src="{{launch.links.mission_patch_small}}">
       </ion-avatar>
-      <h2>
-        <div float-left>{{launch.mission_name}}</div>
-        
-      </h2>
+      <h2>{{launch.mission_name}}</h2>
+      <br/>
+      <div float-left>{{launch.launch_date_utc | date : "MM/d/yyyy"}}</div>
       <div float-right>
         <ion-badge colors="primary">{{launch.launch_success}}</ion-badge>
       </div>
-      <br/>
-      <p>{{launch.launch_date_utc | date : "MM/d/yyyy"}}</p>
     </button>
   </ion-list>
 </ion-content>

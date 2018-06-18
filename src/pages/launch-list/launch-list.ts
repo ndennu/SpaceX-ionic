@@ -17,7 +17,7 @@ export class LaunchListPage {
         private navParams: NavParams,
         private spacexApi: SpacexApiProvider) {
 
-        this.spacexApi.getAllLaucnhes().subscribe(data => {
+        this.spacexApi.getAllLaunches().subscribe(data => {
             this.launches = data
         });
 

@@ -3,11 +3,36 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Launch details</ion-title>
+    <ion-title>{{launch.mission_name}}</ion-title>
   </ion-navbar>
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
+    <ion-card no-padding>
+  
+      <img src="{{launch.links.mission_patch_small}}" padding style="padding-bottom: 0;">
+  
+      <ion-card-header text-center>
+        <h1 margin>{{launch.mission_name}}</h1>
+        <ion-badge [color]="launch.launch_success ? 'green' : 'red'">{{launch.launch_success ? 'Success' : 'Fail'}}</ion-badge>
+      </ion-card-header>
+  
+      <ion-card-content>
+        <p text-justify>{{launch.details}}</p>
+      </ion-card-content>
 
-</ion-content>
+      <ion-item>
+        <ion-icon name="jet" item-start></ion-icon>
+        <h2>Rocket</h2>
+        <p>{{launch.rocket.rocket_type}} - {{launch.rocket.rocket_name}}</p>
+      </ion-item>
+      
+      <ion-item>
+        <ion-icon name="pin" item-start></ion-icon>
+        <h2>Launch Site</h2>
+        <p>{{launch.launch_site.site_name_long}}</p>
+      </ion-item>
+  
+    </ion-card>
+  </ion-content>

@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Rocket } from '../../app/models/Rocket';
 
-/**
- * Generated class for the RocketDetailsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -15,7 +10,13 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class RocketDetailsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  rocket: Rocket;
+
+  constructor(
+    private navCtrl: NavController, 
+    private navParams: NavParams
+  ) {
+    this.rocket = this.navParams.data;
   }
 
   ionViewDidLoad() {

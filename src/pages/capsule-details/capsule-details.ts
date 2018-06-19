@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Capsule } from '../../app/models/Capsule';
 
 /**
  * Generated class for the CapsuleDetailsPage page.
@@ -14,8 +15,13 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'capsule-details.html',
 })
 export class CapsuleDetailsPage {
+  capsule: Capsule;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    private navCtrl: NavController, 
+    private navParams: NavParams
+  ) {
+    this.capsule = this.navParams.data;
   }
 
   ionViewDidLoad() {

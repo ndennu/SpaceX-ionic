@@ -43,7 +43,7 @@ export class SpacexApiProvider {
     }
 
     getTimeLineCompagny(): Observable<CompanyHistory[]> {
-        const endPointUrl = `${this.baseUrl}/info/history`;
+        const endPointUrl = `${this.baseUrl}/info/history?order=desc`;
         return this.http.get<CompanyHistory[]>(endPointUrl);
     }
 

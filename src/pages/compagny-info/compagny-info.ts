@@ -20,7 +20,8 @@ export class CompagnyInfoPage {
 
   about: About;
   histories: CompanyHistory[];
-  filterList: string = "all";
+  filterList: string = "timeline";
+  tl: boolean = true;
 
   constructor(
     private navCtrl: NavController,
@@ -43,8 +44,8 @@ export class CompagnyInfoPage {
 
   changeDisplay() {
     switch (this.filterList) {
-      case "active": this.capsules = this.capsules.filter(capsule => capsule.active === true); break;
-      case "inactive": this.capsules = this.capsules.filter(capsule => capsule.active === false); break;
+      case "timeline": this.tl = !this.tl; break;
+      case "about": this.tl = !this.tl; break;
     } 
   }
 

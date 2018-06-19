@@ -10,16 +10,15 @@
 <ion-content no-padding>
 
   <ion-segment [(ngModel)]="filterList" color="primary" (ionChange)="changeDisplay()" padding style="padding-bottom: 0;">  
-      <ion-segment-button value="active" [disabled]="!capsules">
-        Active
+      <ion-segment-button value="about">
+        About
       </ion-segment-button>
-      <ion-segment-button value="all" [disabled]="!capsules">
-        All
-      </ion-segment-button>
-      <ion-segment-button value="inactive" [disabled]="!capsules">
-        Inactive
+      <ion-segment-button value="timeline">
+        Timeline
       </ion-segment-button>
     </ion-segment>
+  
+    <div *ngIf="!tl">
 
   <ion-card *ngIf="about" no-padding>
 
@@ -67,17 +66,19 @@
 
   </ion-card>
 
-  <timeline endIcon="call">
-      <timeline-item *ngFor="let history of histories">
-        <timeline-time [time]="history.event_date_utc"></timeline-time>
-        <ion-icon name="calendar"></ion-icon>
-        <ion-card>
-          <ion-card-content>
-              <h1>{{history.title}}</h1>
-              <p text-justify>{{history.details}}</p>
-          </ion-card-content>
-        </ion-card>
-      </timeline-item>
+</div>
+
+  <timeline endIcon="call" *ngIf="tl">
+    <timeline-item *ngFor="let history of histories">
+      <timeline-time [time]="history.event_date_utc"></timeline-time>
+      <ion-icon name="calendar"></ion-icon>
+      <ion-card>
+        <ion-card-content>
+            <h1>{{history.title}}</h1>
+            <p text-justify>{{history.details}}</p>
+        </ion-card-content>
+      </ion-card>
+    </timeline-item>
   
     </timeline>
 

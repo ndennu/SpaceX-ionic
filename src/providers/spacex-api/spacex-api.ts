@@ -48,26 +48,19 @@ export class SpacexApiProvider {
         return this.http.get<CompanyHistory[]>(endPointUrl);
     }
 
-    // DETAILS
-
-    /*getCapsule(id: string): Observable<Launch[]> {
-        const endPointUrl = `${this.baseUrl}/capsules/${id}`;
-        return this.http.get<Launch[]>(endPointUrl);
+    getLatestLaunch(): Observable<Launch>{
+        const endPointUrl = `${this.baseUrl}/launches/latest`;
+        return this.http.get<Launch>(endPointUrl);
     }
 
-    getLaunch(): Observable<Launch[]> {
-        const endPointUrl = `${this.baseUrl}/launches/all`;
-        return this.http.get<Launch[]>(endPointUrl);
+    getNextLaunch(): Observable<Launch>{
+        const endPointUrl = `${this.baseUrl}/launches/next`;
+        return this.http.get<Launch>(endPointUrl);
     }
 
-    getLaunchpad(id: string): Observable<Launch[]> {
-        const endPointUrl = `${this.baseUrl}/launchpads/${id}`;
+    getUpcomingLaunches(): Observable<Launch[]>{
+        const endPointUrl = `${this.baseUrl}/launches/upcoming`;
         return this.http.get<Launch[]>(endPointUrl);
     }
-
-    getRocket(id: string): Observable<Launch[]> {
-        const endPointUrl = `${this.baseUrl}/rockets/${id}`;
-        return this.http.get<Launch[]>(endPointUrl);
-    }*/
 
 }

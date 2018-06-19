@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { About } from '../../app/models/About';
 import { SpacexApiProvider } from '../../providers/spacex-api/spacex-api';
+import { CompanyHistory } from '../../app/models/CompanyHistory';
 
 /**
  * Generated class for the CompagnyInfoPage page.
@@ -18,6 +19,8 @@ import { SpacexApiProvider } from '../../providers/spacex-api/spacex-api';
 export class CompagnyInfoPage {
 
   about: About;
+  histories: CompanyHistory[];
+  filterList: string = "all";
 
   constructor(
     private navCtrl: NavController,
@@ -28,10 +31,21 @@ export class CompagnyInfoPage {
         this.about = data
         console.log(data);
     });
+
+    this.spacexApi.getTimeLineCompagny().subscribe(data => {
+      this.histories = data;
+    });
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CompagnyInfoPage');
+  }
+
+  changeDisplay() {
+    switch (this.filterList) {
+      case "active": this.capsules = this.capsules.filter(capsule => capsule.active === true); break;
+      case "inactive": this.capsules = this.capsules.filter(capsule => capsule.active === false); break;
+    } 
   }
 
 }

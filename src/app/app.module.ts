@@ -18,6 +18,9 @@ import { LaunchpadDetailsPage } from '../pages/launchpad-details/launchpad-detai
 import { LaunchpadListPage } from '../pages/launchpad-list/launchpad-list';
 import { RocketDetailsPage } from '../pages/rocket-details/rocket-details';
 import { RocketListPage } from '../pages/rocket-list/rocket-list';
+import { TimelineComponent } from '../components/timeline/timeline';
+import { TimelineTimeComponent } from '../components/timeline/timeline';
+import { TimelineItemComponent } from '../components/timeline/timeline';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,10 @@ import { RocketListPage } from '../pages/rocket-list/rocket-list';
     LaunchpadDetailsPage,
     LaunchpadListPage,
     RocketDetailsPage,
-    RocketListPage
+    RocketListPage,
+    TimelineComponent,
+    TimelineItemComponent,
+    TimelineTimeComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Launchpad } from '../../app/models/Launchpad';
 
 /**
  * Generated class for the LaunchpadDetailsPage page.
@@ -15,7 +16,13 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class LaunchpadDetailsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  launchpad: Launchpad;
+
+  constructor(
+    private navCtrl: NavController, 
+    private navParams: NavParams
+  ) {
+    this.launchpad = this.navParams.data;
   }
 
   ionViewDidLoad() {

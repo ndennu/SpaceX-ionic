@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { SpacexApiProvider } from '../../providers/spacex-api/spacex-api';
 import { Launchpad } from '../../app/models/Launchpad';
-import { LaunchDetailsPage } from '../launch-details/launch-details';
+import { LaunchpadDetailsPage } from '../launchpad-details/launchpad-details';
 
 /**
  * Generated class for the LaunchpadListPage page.
@@ -40,6 +40,6 @@ export class LaunchpadListPage {
   }
 
   launchpadDetails(launchpad: Launchpad) {
-    this.navCtrl.push(LaunchDetailsPage, launchpad);
+    this.navCtrl.push(LaunchpadDetailsPage, launchpad);
   }
 }

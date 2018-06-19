@@ -3,11 +3,58 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Launchpad details</ion-title>
+    <ion-title>{{ launchpad.location.name }}</ion-title>
   </ion-navbar>
 </ion-header>
 
 
-<ion-content padding>
-
-</ion-content>
+<ion-content>
+    <ion-card no-padding>
+      <ion-card-content>
+  
+        <h1 text-center>{{ launchpad.full_name }}</h1>
+        <br>
+        <ion-row text-center>
+          <ion-col col-12>
+              <ion-badge colors="primary">{{launchpad.status}}</ion-badge>
+          </ion-col>
+        </ion-row>
+        <br>
+        <p text-justify>{{launchpad.details}}</p>
+  
+      </ion-card-content>
+  
+      <ion-item>
+          <ion-icon name="locate" item-start large></ion-icon>
+        <h2>{{ launchpad.location.region }}</h2>
+        <p>lat: {{launchpad.location.latitude}} / lat: {{launchpad.location.longitude}}</p>
+      </ion-item>
+  <!--
+      <ion-item>
+        <ion-icon name="stats" item-start large></ion-icon>
+        <h2>Success Rate</h2>
+        <ion-badge color="primary" item-end>
+          {{ rocket.success_rate_pct }}%
+        </ion-badge>
+      </ion-item>
+  
+      <ion-item>
+        <ion-icon name="flag" item-start large></ion-icon>
+        <h2>Country</h2>
+        <p>{{rocket.country}}</p>
+      </ion-item>
+  
+      <ion-item>
+        <ion-icon name="plane" item-start large></ion-icon>
+        <h2>First Flight</h2>
+        <p>{{rocket.first_flight | date : "MM/dd/yyyy"}}</p>
+      </ion-item>
+  
+      <ion-item>
+        <ion-icon name="logo-usd" item-start large></ion-icon>
+        <h2>Cost Per Launch</h2>
+        <p>{{rocket.cost_per_launch | currency:'USD':true}}</p>  
+      </ion-item>
+    -->
+    </ion-card>
+  </ion-content>

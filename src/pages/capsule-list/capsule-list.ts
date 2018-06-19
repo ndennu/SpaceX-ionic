@@ -47,8 +47,8 @@ export class CapsuleListPage {
     this.capsules = this.capsulesSave;
 
     switch (this.filterList) {
-      case "active": this.capsules = this.capsules.filter(rocket => rocket.active === true); break;
-      case "inactive": this.capsules = this.capsules.filter(rocket => rocket.active === false); break;
+      case "active": this.capsules = this.capsules.filter(capsule => capsule.active === true); break;
+      case "inactive": this.capsules = this.capsules.filter(capsule => capsule.active === false); break;
     } 
   }
 

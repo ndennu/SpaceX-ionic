@@ -16,7 +16,7 @@
 <ion-content>
     <ion-card no-padding>
       <ion-card-content>
-  
+        <h1 text-center>{{capsule.name}}</h1>
         <ion-row text-center>
           <ion-col col-12>
             <ion-badge [color]="capsule.active ? 'green' : 'red'" margin>
@@ -30,36 +30,26 @@
       </ion-card-content>
   
       <ion-item>
-          <ion-icon name="jet" item-start large></ion-icon>
-        <h2>Stages/Boosters</h2>
-        <ion-badge color="primary" item-end>
-        </ion-badge>
+          <ion-icon name="planet" item-start large></ion-icon>
+        <h2>Orbite duration</h2>
+        {{capsule.orbit_duration_yr}} years
       </ion-item>
   
       <ion-item>
-        <ion-icon name="stats" item-start large></ion-icon>
-        <h2>Success Rate</h2>
-        <ion-badge color="primary" item-end>
-        </ion-badge>
+         <h3 text-center>Heat Shield :</h3>
+          <p>Material : {{capsule.heat_shield.material}}</p>
+          <p>Size (meters) : {{capsule.heat_shield.size_meters}}</p>
+          <p>Temp (degrees) : {{capsule.heat_shield.temp_degrees}}</p>
+          <p>Partener : {{capsule.heat_shield.dev_partner}}</p>
       </ion-item>
-  
+
       <ion-item>
-        <ion-icon name="flag" item-start large></ion-icon>
-        <h2>Country</h2>
-        <p></p>
-      </ion-item>
-  
-      <ion-item>
-        <ion-icon name="plane" item-start large></ion-icon>
-        <h2>First Flight</h2>
-        <p></p>
-      </ion-item>
-  
-      <ion-item>
-        <ion-icon name="logo-usd" item-start large></ion-icon>
-        <h2>Cost Per Launch</h2>
-        <p></p>  
-      </ion-item>
+          <h3 text-center>Thrusters :</h3>
+           <p>Type : {{capsule.thrusters.type}}</p>
+           <p>Fuel 1 : {{capsule.thrusters.fuel_1}}</p>
+           <p>Fuel 2 : {{capsule.thrusters.fuel_2}}</p>
+           <p>Amount : {{capsule.thrusters.amount}}</p>
+       </ion-item>
   
     </ion-card>
   </ion-content>

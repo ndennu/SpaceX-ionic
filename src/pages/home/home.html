@@ -29,15 +29,16 @@
     </ion-card-content>
   </ion-card>
 
-  <ion-card *ngIf="latestLaunch" (click)="launchDetails(latestLaunch)" [ngStyle]="{'background-color': latestLaunch.launch_success ? '#4CAF50' : '#F44336'}">
+  <ion-card text-center *ngIf="latestLaunch" (click)="launchDetails(latestLaunch)" [ngStyle]="{'background-color': latestLaunch.launch_success ? '#4CAF50' : '#F44336'}">
     <ion-card-content>
       <ion-row>
         <ion-col>
-          <h2 ion-text color="white" text-center style="font-weight: bold;">Latest launch</h2>
+          <h2 ion-text color="white" style="font-weight: bold;">Latest launch</h2>
         </ion-col>
       </ion-row>
 
       <ion-row>
+        <img src="{{latestLaunch.links.mission_patch_small}}" *ngIf="latestLaunch.links.mission_patch_small" style="max-height: 50px; max-width: 50px;">
         <ion-col>
           <h3 ion-text color="white" style="font-weight: bold;">{{latestLaunch.mission_name}}</h3>
           <h3 ion-text color="white" style="font-style: italic;">{{latestLaunch.launch_date_utc | date : "MM/dd/yyyy HH:mm"}}</h3>

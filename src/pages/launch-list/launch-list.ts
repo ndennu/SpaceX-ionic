@@ -11,6 +11,9 @@ import { LaunchDetailsPage } from '../launch-details/launch-details';
 })
 export class LaunchListPage {
 
+    filters: { [filter: string]: string; } = {}
+    value: any;
+
     launches: Launch[];
     launchesSave: Launch[];
 
@@ -48,4 +51,15 @@ export class LaunchListPage {
         } 
     }
 
+    valueChange() {
+        this.filters["launch_year"] = this.value;
+        this.getWithFilters();
+    }
+
+    getWithFilters() {
+        this.spacexApi.getLaunchesWithFilters(this.filters).subscribe(data => {
+            this.launches = data;
+            this.launchesSave = data;
+        });
+    }
 }

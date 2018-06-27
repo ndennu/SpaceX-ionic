@@ -21,6 +21,11 @@
     </ion-segment-button>
   </ion-segment>
 
+  <ion-item>
+    <ion-label>Launch Year</ion-label>
+    <ion-datetime displayFormat="YYYY" pickerFormat="YYYY" [(ngModel)]="value" (ngModelChange)="valueChange()"></ion-datetime>
+  </ion-item>
+
   <ion-row>
     <ion-col text-center>
       <h4 *ngIf="launches">{{launches.length}} launches</h4>

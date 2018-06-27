@@ -7,14 +7,14 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>{{capsule.name}}</ion-title>
+    <ion-title *ngIf="capsule">{{capsule.name}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content>
-    <ion-card no-padding>
+    <ion-card no-padding *ngIf="capsule">
       <ion-card-content>
         <h1 text-center>{{capsule.name}}</h1>
         <ion-row text-center>

@@ -36,7 +36,7 @@ export class LaunchListPage {
     }
 
     launchDetails(launch: Launch) {
-        this.navCtrl.push(LaunchDetailsPage, launch);
+        this.navCtrl.push(LaunchDetailsPage, launch.flight_number);
     }
 
     filterChange() {

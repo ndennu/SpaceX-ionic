@@ -40,6 +40,6 @@ export class LaunchpadListPage {
   }
 
   launchpadDetails(launchpad: Launchpad) {
-    this.navCtrl.push(LaunchpadDetailsPage, launchpad);
+    this.navCtrl.push(LaunchpadDetailsPage, launchpad.id);
   }
 }

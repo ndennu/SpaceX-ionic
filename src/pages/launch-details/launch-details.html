@@ -3,13 +3,13 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>{{launch.mission_name}}</ion-title>
+    <ion-title *ngIf="launch">{{launch.mission_name}}</ion-title>
   </ion-navbar>
 </ion-header>
 
 
 <ion-content>
-    <ion-card no-padding>
+    <ion-card no-padding *ngIf="launch">
   
       <img src="{{launch.links.mission_patch_small}}" padding style="padding-bottom: 0;">
   
@@ -23,13 +23,13 @@
         <p text-justify>{{launch.details}}</p>
       </ion-card-content>
 
-      <ion-item>
+      <ion-item (click)="goRocketDetails(launch)">
         <ion-icon name="jet" item-start></ion-icon>
         <h2>Rocket</h2>
         <p>{{launch.rocket.rocket_type}} - {{launch.rocket.rocket_name}}</p>
       </ion-item>
       
-      <ion-item>
+      <ion-item (click)="goLaunchpadDetails(launch)">
         <ion-icon name="pin" item-start></ion-icon>
         <h2>Launch Site</h2>
         <p>{{launch.launch_site.site_name_long}}</p>

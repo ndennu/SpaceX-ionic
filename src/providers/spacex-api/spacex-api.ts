@@ -63,4 +63,29 @@ export class SpacexApiProvider {
         return this.http.get<Launch[]>(endPointUrl);
     }
 
+
+    getLaunchById(id: number): Observable<Launch[]> {
+        const endPointUrl = `${this.baseUrl}/launches?flight_number=${id}`;
+        return this.http.get<Launch[]>(endPointUrl);
+    }
+
+    getCapsuleById(id: string): Observable<Capsule> {
+        const endPointUrl = `${this.baseUrl}/capsules/${id}`;
+        return this.http.get<Capsule>(endPointUrl);
+    }
+
+    getRocketById(id: string): Observable<Rocket> {
+        const endPointUrl = `${this.baseUrl}/rockets/${id}`;
+        return this.http.get<Rocket>(endPointUrl);
+    }
+
+    getLaunchPadById(id: string): Observable<Launchpad> {
+        const endPointUrl = `${this.baseUrl}/launchpads/${id}`;
+        return this.http.get<Launchpad>(endPointUrl);
+    }
+
+    getUpcomingById(id: number): Observable<Launch[]> {
+        const endPointUrl = `${this.baseUrl}/launches/upcoming?flight_number=${id}`;
+        return this.http.get<Launch[]>(endPointUrl);
+    }
 }

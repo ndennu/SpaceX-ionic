@@ -45,7 +45,7 @@ export class HomePage {
   }
 
   launchDetails(launch: Launch): void{
-    this.navCtrl.push(LaunchDetailsPage, launch);
+    this.navCtrl.push(LaunchDetailsPage, launch.flight_number);
   }
 
   getNextLaunchRemainingTime(): void{

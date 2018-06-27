@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Rocket } from '../../app/models/Rocket';
+import { SpacexApiProvider } from '../../providers/spacex-api/spacex-api';
 
 
 @IonicPage()
@@ -14,9 +15,13 @@ export class RocketDetailsPage {
 
   constructor(
     private navCtrl: NavController, 
-    private navParams: NavParams
+    private navParams: NavParams,
+    private spacexApi: SpacexApiProvider
   ) {
-    this.rocket = this.navParams.data;
+    var id = this.navParams.data;
+    this.spacexApi.getRocketById(id).subscribe(data => {
+      this.rocket = data;
+    });
   }
 
   ionViewDidLoad() {

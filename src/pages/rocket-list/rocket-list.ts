@@ -36,7 +36,7 @@ export class RocketListPage {
   }
 
   rocketDetails(rocket: Rocket){
-    this.navCtrl.push(RocketDetailsPage, rocket);
+    this.navCtrl.push(RocketDetailsPage, rocket.id);
   }
 
   filterChange(){

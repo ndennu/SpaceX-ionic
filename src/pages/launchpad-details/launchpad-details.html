@@ -3,13 +3,13 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>{{ launchpad.location.name }}</ion-title>
+    <ion-title *ngIf="launchpad">{{ launchpad.location.name }}</ion-title>
   </ion-navbar>
 </ion-header>
 
 
 <ion-content>
-    <ion-card no-padding>
+    <ion-card no-padding *ngIf="launchpad">
       <ion-card-content>
   
         <h1 text-center>{{ launchpad.full_name }}</h1>

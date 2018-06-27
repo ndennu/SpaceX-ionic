@@ -40,7 +40,7 @@ export class CapsuleListPage {
   }
 
   capsuleDetails(capsule: Capsule) {
-    this.navCtrl.push(CapsuleDetailsPage, capsule);
+    this.navCtrl.push(CapsuleDetailsPage, capsule.id);
   }
 
   filterChange(){

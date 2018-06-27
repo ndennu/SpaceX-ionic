@@ -3,13 +3,13 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>{{rocket.name}}</ion-title>
+    <ion-title *ngIf="rocket">{{rocket.name}}</ion-title>
   </ion-navbar>
 </ion-header>
 
 
 <ion-content>
-  <ion-card no-padding>
+  <ion-card no-padding *ngIf="rocket">
     <ion-card-content>
 
       <ion-row text-center>

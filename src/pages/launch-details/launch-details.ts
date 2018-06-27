@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Launch } from '../../app/models/Launch';
+import { RocketDetailsPage } from '../rocket-details/rocket-details';
+import { SpacexApiProvider } from '../../providers/spacex-api/spacex-api';
+import { LaunchpadDetailsPage } from '../launchpad-details/launchpad-details';
 
 
 @IonicPage()
@@ -15,13 +18,26 @@ export class LaunchDetailsPage {
 
   constructor(
     private navCtrl: NavController, 
-    private navParams: NavParams)
+    private navParams: NavParams,
+    private spacexApi: SpacexApiProvider)
   {
-    this.launch = this.navParams.data;
+    var id = this.navParams.data;
 
-    if(this.launch.launch_success == null){
-      this.getRemainingTime();
-    }
+    this.spacexApi.getLaunchById(id).subscribe(data => {
+        this.launch = data[0];
+        if (this.launch == undefined) {
+          this.spacexApi.getUpcomingById(id).subscribe(data => {
+            this.launch = data[0];
+            if(this.launch.launch_success == null){
+              this.getRemainingTime();
+            }
+          });
+        } else {
+          if(this.launch.launch_success == null){
+            this.getRemainingTime();
+          }
+        }
+    });  
   }
 
   ionViewDidLoad() {
@@ -34,6 +50,14 @@ export class LaunchDetailsPage {
       this.remainingTime = this.formatTime(diffInMs);
       this.getRemainingTime();
     }, 1000);
+  }
+
+  goRocketDetails(launch: Launch): void {
+    this.navCtrl.push(RocketDetailsPage, launch.rocket.rocket_id);
+  }
+
+  goLaunchpadDetails(launch: Launch): void {
+    this.navCtrl.push(LaunchpadDetailsPage, launch.launch_site.site_id);
   }
 
   private formatTime(msTime: number): string{

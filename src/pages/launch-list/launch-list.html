@@ -23,7 +23,11 @@
 
   <ion-item>
     <ion-label>Launch Year</ion-label>
-    <ion-datetime displayFormat="YYYY" pickerFormat="YYYY" [(ngModel)]="value" (ngModelChange)="valueChange()"></ion-datetime>
+    <ion-datetime displayFormat="YYYY" pickerFormat="YYYY" [(ngModel)]="valueYear" (ngModelChange)="valueChange()"></ion-datetime>
+  </ion-item>
+
+  <ion-item (click)="orderChange()">
+    <ion-label>Order by date <span *ngIf="order">asc</span><span *ngIf="!order">desc</span></ion-label>
   </ion-item>
 
   <ion-row>

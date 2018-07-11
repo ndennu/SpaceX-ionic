@@ -12,7 +12,8 @@ import { LaunchDetailsPage } from '../launch-details/launch-details';
 export class LaunchListPage {
 
     filters: { [filter: string]: string; } = {}
-    value: any;
+    valueYear: any;
+    order: boolean;
 
     launches: Launch[];
     launchesSave: Launch[];
@@ -26,10 +27,13 @@ export class LaunchListPage {
         private navParams: NavParams,
         private spacexApi: SpacexApiProvider) {
 
-        this.spacexApi.getAllLaunches().subscribe(data => {
+        this.order = false;
+        this.filters["order"] = this.order ? "asc" : "desc";
+
+        this.spacexApi.getLaunchesWithFilters(this.filters).subscribe(data => {
             this.launches = data;
             this.launchesSave = data;
-            this.onLoad = false;
+            this.onLoad = false
         });
 
     }
@@ -51,8 +55,14 @@ export class LaunchListPage {
         } 
     }
 
+    orderChange(){
+        this.order = !this.order;
+        this.filters["order"] = this.order ? "asc" : "desc";
+        this.getWithFilters();
+    }
+
     valueChange() {
-        this.filters["launch_year"] = this.value;
+        this.filters["launch_year"] = this.valueYear;
         this.getWithFilters();
     }
 

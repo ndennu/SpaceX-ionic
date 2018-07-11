@@ -72,4 +72,18 @@ export class LaunchListPage {
             this.launchesSave = data;
         });
     }
+
+    resetFilters() {
+        this.filters = {};
+        this.valueYear = "";
+
+        this.order = false;
+        this.filters["order"] = this.order ? "asc" : "desc";
+
+        this.spacexApi.getLaunchesWithFilters(this.filters).subscribe(data => {
+            this.launches = data;
+            this.launchesSave = data;
+            this.onLoad = false
+        });
+    }
 }

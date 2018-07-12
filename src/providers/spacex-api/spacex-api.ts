@@ -88,4 +88,14 @@ export class SpacexApiProvider {
         const endPointUrl = `${this.baseUrl}/launches/upcoming?flight_number=${id}`;
         return this.http.get<Launch[]>(endPointUrl);
     }
+
+    getLaunchesWithFilters(filters: any): Observable<Launch[]> {
+        var endPointUrl = `${this.baseUrl}/launches?`;
+
+        Object.keys(filters).forEach(key => {
+            endPointUrl += key + "=" + filters[key] + "&";
+        });
+
+        return this.http.get<Launch[]>(endPointUrl.substr(0, endPointUrl.length - 1));
+    }
 }

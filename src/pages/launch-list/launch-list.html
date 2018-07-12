@@ -4,6 +4,11 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>Launches</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="resetFilters()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
@@ -20,6 +25,15 @@
       Fail
     </ion-segment-button>
   </ion-segment>
+
+  <ion-item>
+    <ion-label>Launch Year</ion-label>
+    <ion-datetime displayFormat="YYYY" pickerFormat="YYYY" [(ngModel)]="valueYear" (ngModelChange)="valueChange()"></ion-datetime>
+  </ion-item>
+
+  <ion-item (click)="orderChange()">
+    <ion-label>Order by date <span *ngIf="order">asc</span><span *ngIf="!order">desc</span></ion-label>
+  </ion-item>
 
   <ion-row>
     <ion-col text-center>

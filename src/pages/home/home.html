@@ -1,0 +1,79 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>SpaceX</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card *ngIf="nextLaunch" (click)="launchDetails(nextLaunch)" style="background-color: #488aff;">
+    <ion-card-content>
+      <ion-row>
+        <ion-col>
+          <h2 ion-text text-center color="white" style="font-weight: bold;">Next launch</h2>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <h3 ion-text color="white" style="font-weight: bold;">{{nextLaunch.mission_name}}</h3>
+          <h3 ion-text color="white" style="font-style: italic;">{{nextLaunch.launch_date_utc | date : "MM/dd/yyyy HH:mm"}}</h3>
+        </ion-col>
+        <ion-col text-right>
+          <ion-badge *ngIf="strNextLaunchTimer" [color]="primary">{{strNextLaunchTimer}}</ion-badge>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card text-center *ngIf="latestLaunch" (click)="launchDetails(latestLaunch)" [ngStyle]="{'background-color': latestLaunch.launch_success ? '#4CAF50' : '#F44336'}">
+    <ion-card-content>
+      <ion-row>
+        <ion-col>
+          <h2 ion-text color="white" style="font-weight: bold;">Latest launch</h2>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <img src="{{latestLaunch.links.mission_patch_small}}" *ngIf="latestLaunch.links.mission_patch_small" style="max-height: 50px; max-width: 50px;">
+        <ion-col>
+          <h3 ion-text color="white" style="font-weight: bold;">{{latestLaunch.mission_name}}</h3>
+          <h3 ion-text color="white" style="font-style: italic;">{{latestLaunch.launch_date_utc | date : "MM/dd/yyyy HH:mm"}}</h3>
+        </ion-col>
+        <ion-col text-right>
+          <ion-badge *ngIf="strLatestLaunchTime" [color]="latestLaunch.launch_success ? 'green' : 'red'">{{strLatestLaunchTime}}</ion-badge>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card> 
+
+  <ion-card style="margin-top: 50px;">
+    <ion-card-content>
+      <h2 ion-text text-center style="font-weight: bold;">Upcoming Launches</h2>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-row>
+    <ion-slides pager (autoplay)="2000">
+      <ion-slide *ngFor="let launch of upcomingLaunches">
+        <ion-card (click)="launchDetails(launch)">
+          <ion-card-content>
+            <ion-row>
+              <ion-col text-left>
+                <h2 ion-text>{{launch.mission_name}}</h2>
+                <h3 ion-text color="subtitleCard">{{launch.launch_date_utc | date : "MM/dd/yyyy HH:mm"}}</h3>
+              </ion-col>
+              <ion-col text-right>
+                <ion-badge *ngIf="upcomingTimer && upcomingTimer[launch.flight_number]" [color]="primary">{{upcomingTimer[launch.flight_number]}}</ion-badge>
+              </ion-col>
+            </ion-row>
+          </ion-card-content>
+        </ion-card>
+      </ion-slide>
+    </ion-slides>
+  </ion-row>
+
+</ion-content>

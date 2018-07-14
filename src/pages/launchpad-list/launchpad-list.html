@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Launchpads</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  
+    <ion-row>
+        <ion-col text-center>
+          <h4 *ngIf="!launchpads">No launchpads</h4>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+          <ion-col text-center>
+              <ion-spinner name="crescent" *ngIf="onLoad"></ion-spinner>
+          </ion-col>
+        </ion-row>
+      
+  <ion-list>
+    <button ion-item *ngFor="let launchpad of launchpads" (click)="launchpadDetails(launchpad)">
+      <h2>{{launchpad.location.name}}</h2>
+      <br/>
+      <div float-left>{{launchpad.location.region}}</div>
+      <div float-right>
+        <ion-badge colors="primary">{{launchpad.status}}</ion-badge>
+      </div>
+
+    </button>
+  </ion-list>
+</ion-content>

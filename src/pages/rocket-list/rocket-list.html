@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Rockets</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-segment [(ngModel)]="filterList" color="primary" (ionChange)="filterChange()" padding style="padding-bottom: 0;">  
+    <ion-segment-button value="active" [disabled]="!rockets">
+      Active
+    </ion-segment-button>
+    <ion-segment-button value="all" [disabled]="!rockets">
+      All
+    </ion-segment-button>
+    <ion-segment-button value="inactive" [disabled]="!rockets">
+      Inactive
+    </ion-segment-button>
+  </ion-segment>
+
+  <ion-row>
+    <ion-col text-center>
+      <h4 *ngIf="rockets">{{rockets.length}} rockets</h4>
+      <h4 *ngIf="!rockets">No rocket</h4>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col text-center>
+        <ion-spinner name="crescent" *ngIf="onLoad"></ion-spinner>
+    </ion-col>
+  </ion-row>
+
+  <ion-list>
+    <button ion-item *ngFor="let rocket of rockets" (click)="rocketDetails(rocket)">
+      <div float-left>
+        <h2>{{rocket.name}}</h2>
+        <h4>Stages : {{rocket.stages}}</h4>
+      </div>
+      <div float-right>
+        <ion-badge [color]="rocket.active ? 'green' : 'red'">{{rocket.active ? 'Active' : 'Inactive'}}</ion-badge>
+      </div>
+    </button>
+  </ion-list>
+</ion-content>

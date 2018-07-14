@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Capsules</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding id="card">
+    <ion-segment [(ngModel)]="filterList" color="primary" (ionChange)="filterChange()" padding style="padding-bottom: 0;">  
+      <ion-segment-button value="active" [disabled]="!capsules">
+        Active
+      </ion-segment-button>
+      <ion-segment-button value="all" [disabled]="!capsules">
+        All
+      </ion-segment-button>
+      <ion-segment-button value="inactive" [disabled]="!capsules">
+        Inactive
+      </ion-segment-button>
+    </ion-segment>
+  
+    <ion-row>
+        <ion-col text-center>
+          <h4 *ngIf="!capsules">No capsules</h4>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+          <ion-col text-center>
+              <ion-spinner name="crescent" *ngIf="onLoad"></ion-spinner>
+          </ion-col>
+        </ion-row>
+      
+  <ion-list>
+    <button ion-item *ngFor="let capsule of capsules" (click)="capsuleDetails(capsule)">
+      <div float-left>
+        <h2>{{capsule.name}}</h2>
+      </div>
+      <div float-right>
+        <ion-badge [color]="capsule.active ? 'green' : 'red'">{{capsule.active ? 'Active' : 'Inactive'}}</ion-badge>
+      </div>
+    </button>
+  </ion-list>
+</ion-content>
